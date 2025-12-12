@@ -270,9 +270,9 @@ Baseado em **Tailwind CSS**, com tema escuro customizado.
 ### Sprint 0 – Setup e Autenticação
 
 - [ ] **Configurar projeto Django**
-  - [ ] Criar projeto `finanpy`
+  - [x] Criar projeto `finanpy`
   - [ ] Configurar `settings.py` com `accounts` como app de auth
-  - [ ] Adicionar apps: `accounts`, `profiles`, `categories`, `transactions`
+  - [x] Adicionar apps: `accounts`, `profiles`, `categories`, `transactions`,`users`,
   - [ ] Configurar idioma: `LANGUAGE_CODE = 'pt-br'`
   - [ ] Configurar fuso horário: `TIME_ZONE = 'America/Sao_Paulo'`
 
