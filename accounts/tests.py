@@ -6,12 +6,13 @@ from django.contrib.messages import get_messages
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.db import connection
+from django.http import Http404
 from django.test import RequestFactory, TransactionTestCase
 from django.urls import reverse
 
 from accounts.forms import AccountForm
 from accounts.models import Account
-from accounts.views import AccountCreateView, AccountListView
+from accounts.views import AccountCreateView, AccountListView, AccountUpdateView
 
 
 User = get_user_model()
@@ -220,3 +221,177 @@ class AccountCreateViewTests(TransactionTestCase):
 
         messages = [str(message) for message in get_messages(request)]
         self.assertIn('Conta criada com sucesso.', messages)
+
+
+class AccountUpdateViewTests(TransactionTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        existing_tables = connection.introspection.table_names()
+        cls.created_account_table = Account._meta.db_table not in existing_tables
+        # Account migration is scheduled for Sprint 2.12.
+        if cls.created_account_table:
+            with connection.schema_editor() as schema_editor:
+                schema_editor.create_model(Account)
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.created_account_table:
+            with connection.schema_editor() as schema_editor:
+                schema_editor.delete_model(Account)
+        super().tearDownClass()
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            email='user@example.com',
+            password='password123',
+        )
+        self.other_user = User.objects.create_user(
+            email='other@example.com',
+            password='password123',
+        )
+
+    def add_request_middleware(self, request):
+        SessionMiddleware(lambda request: None).process_request(request)
+        request.session.save()
+        request._messages = FallbackStorage(request)
+
+    def build_view(self, account):
+        request = self.factory.get(f'/accounts/{account.pk}/edit/')
+        request.user = self.user
+        view = AccountUpdateView()
+        view.setup(request, pk=account.pk)
+        view.object = account
+        return view
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        account = Account.objects.create(
+            user=self.user,
+            name='Conta Principal',
+            bank_name='Banco 1',
+            account_type=Account.AccountType.CHECKING,
+            balance=Decimal('100.00'),
+        )
+        request = self.factory.get(f'/accounts/{account.pk}/edit/')
+        request.user = AnonymousUser()
+
+        response = AccountUpdateView.as_view()(request, pk=account.pk)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(reverse('users:login'), response['Location'])
+
+    def test_get_queryset_filters_by_request_user(self):
+        owned_account = Account.objects.create(
+            user=self.user,
+            name='Conta do Usuário',
+            bank_name='Banco 1',
+            account_type=Account.AccountType.CHECKING,
+            balance=Decimal('100.00'),
+        )
+        Account.objects.create(
+            user=self.other_user,
+            name='Conta de Terceiro',
+            bank_name='Banco 2',
+            account_type=Account.AccountType.SAVINGS,
+            balance=Decimal('200.00'),
+        )
+
+        view = self.build_view(owned_account)
+
+        queryset = view.get_queryset()
+
+        self.assertEqual(
+            list(queryset.values_list('name', flat=True)),
+            ['Conta do Usuário'],
+        )
+        self.assertTrue(
+            all(account.user_id == self.user.id for account in queryset)
+        )
+
+    def test_get_context_data_adds_page_title_and_form(self):
+        account = Account.objects.create(
+            user=self.user,
+            name='Conta Principal',
+            bank_name='Banco 1',
+            account_type=Account.AccountType.SAVINGS,
+            balance=Decimal('100.00'),
+        )
+        view = self.build_view(account)
+
+        context = view.get_context_data()
+
+        self.assertEqual(context['title'], 'Editar Conta')
+        self.assertIsInstance(context['form'], AccountForm)
+
+    def test_post_updates_account_for_request_user(self):
+        account = Account.objects.create(
+            user=self.user,
+            name='Conta Antiga',
+            bank_name='Banco Antigo',
+            account_type=Account.AccountType.WALLET,
+            balance=Decimal('25.00'),
+        )
+        request = self.factory.post(f'/accounts/{account.pk}/edit/', data={
+            'name': 'Conta Atualizada',
+            'bank_name': 'Banco Novo',
+            'account_type': Account.AccountType.CHECKING,
+            'balance': '150.75',
+        })
+        request.user = self.user
+        self.add_request_middleware(request)
+
+        response = AccountUpdateView.as_view()(request, pk=account.pk)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/accounts/')
+        account.refresh_from_db()
+        self.assertEqual(account.name, 'Conta Atualizada')
+        self.assertEqual(account.bank_name, 'Banco Novo')
+        self.assertEqual(account.account_type, Account.AccountType.CHECKING)
+        self.assertEqual(account.balance, Decimal('150.75'))
+        self.assertEqual(account.user, self.user)
+
+    def test_post_by_other_user_returns_404(self):
+        account = Account.objects.create(
+            user=self.user,
+            name='Conta Protegida',
+            bank_name='Banco 1',
+            account_type=Account.AccountType.CHECKING,
+            balance=Decimal('100.00'),
+        )
+        request = self.factory.post(f'/accounts/{account.pk}/edit/', data={
+            'name': 'Tentativa de Alteração',
+            'bank_name': 'Banco 2',
+            'account_type': Account.AccountType.SAVINGS,
+            'balance': '10.00',
+        })
+        request.user = self.other_user
+        self.add_request_middleware(request)
+
+        with self.assertRaises(Http404):
+            AccountUpdateView.as_view()(request, pk=account.pk)
+        account.refresh_from_db()
+        self.assertEqual(account.name, 'Conta Protegida')
+
+    def test_post_adds_success_message(self):
+        account = Account.objects.create(
+            user=self.user,
+            name='Conta Antiga',
+            bank_name='Banco Antigo',
+            account_type=Account.AccountType.WALLET,
+            balance=Decimal('25.00'),
+        )
+        request = self.factory.post(f'/accounts/{account.pk}/edit/', data={
+            'name': 'Conta Atualizada',
+            'bank_name': 'Banco Novo',
+            'account_type': Account.AccountType.SAVINGS,
+            'balance': '150.75',
+        })
+        request.user = self.user
+        self.add_request_middleware(request)
+
+        AccountUpdateView.as_view()(request, pk=account.pk)
+
+        messages = [str(message) for message in get_messages(request)]
+        self.assertIn('Conta atualizada com sucesso.', messages)

@@ -40,6 +40,7 @@
 - `AccountForm` (app `accounts`) criado para cadastro e edicao de contas, com labels em portugues e classes TailwindCSS nos campos.
 - `AccountListView` (app `accounts`) criada para listar contas do usuario autenticado, ordenadas por nome, com saldo total consolidado no contexto.
 - `AccountCreateView` (app `accounts`) criada para cadastrar contas do usuario autenticado usando `AccountForm`, associando a conta ao usuario logado e exibindo mensagem de sucesso.
+- `AccountUpdateView` (app `accounts`) criada para editar contas do usuario autenticado usando `AccountForm`, filtrando a consulta pelo usuario logado e exibindo mensagem de sucesso.
 - Template `templates/accounts/account_list.html` criado para exibir contas do usuario, saldo total consolidado, estado vazio e botoes de acao ainda desabilitados enquanto as URLs de CRUD nao existem.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
@@ -54,7 +55,7 @@
   - `templates/auth/login.html`
   - `templates/accounts/account_list.html`
 - Testes de autenticacao e home em `users/tests.py`.
-- Testes da listagem e criacao de contas em `accounts/tests.py`, cobrindo isolamento por usuario, ordenacao por nome, saldo total, protecao por autenticacao e associacao da conta criada ao usuario logado.
+- Testes da listagem, criacao e edicao de contas em `accounts/tests.py`, cobrindo isolamento por usuario, ordenacao por nome, saldo total, protecao por autenticacao, associacao da conta criada ao usuario logado e bloqueio de edicao de conta de outro usuario.
 
 ## Nao implementado ainda
 

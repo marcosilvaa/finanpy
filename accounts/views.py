@@ -3,7 +3,7 @@ from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from .forms import AccountForm
 from .models import Account
@@ -43,4 +43,23 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         response = super().form_valid(form)
         messages.success(self.request, 'Conta criada com sucesso.')
+        return response
+
+
+class AccountUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = 'users:login'
+    model = Account
+    form_class = AccountForm
+    template_name = 'accounts/account_form.html'
+    success_url = '/accounts/'
+    extra_context = {
+        'title': 'Editar Conta',
+    }
+
+    def get_queryset(self):
+        return Account.objects.filter(user=self.request.user)
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Conta atualizada com sucesso.')
         return response
