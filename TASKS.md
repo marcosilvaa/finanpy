@@ -1,6 +1,6 @@
 ## Lista de Tarefas
 
-### Sprint 0: Configuração Inicial do Projeto (Setup)
+### Sprint 0: Configuração Inicial do Projeto (Setup) ✅ CONCLUÍDA
 
 #### Tarefa 0.1: Configuração do Ambiente de Desenvolvimento
 **Descrição**: Preparar ambiente local para desenvolvimento do projeto
@@ -54,12 +54,12 @@
 **Descrição**: Criar todos os apps necessários do projeto
 
 **Subtarefas**:
-- [ ] 0.4.1: Criar app `users`: `python manage.py startapp users`
-- [ ] 0.4.2: Criar app `profiles`: `python manage.py startapp profiles`
-- [ ] 0.4.3: Criar app `accounts`: `python manage.py startapp accounts`
-- [ ] 0.4.4: Criar app `categories`: `python manage.py startapp categories`
-- [ ] 0.4.5: Criar app `transactions`: `python manage.py startapp transactions`
-- [ ] 0.4.6: Adicionar todos os apps em INSTALLED_APPS no settings.py:
+- [X] 0.4.1: Criar app `users`: `python manage.py startapp users`
+- [X] 0.4.2: Criar app `profiles`: `python manage.py startapp profiles`
+- [X] 0.4.3: Criar app `accounts`: `python manage.py startapp accounts`
+- [X] 0.4.4: Criar app `categories`: `python manage.py startapp categories`
+- [X] 0.4.5: Criar app `transactions`: `python manage.py startapp transactions`
+- [X] 0.4.6: Adicionar todos os apps em INSTALLED_APPS no settings.py:
   ```python
   INSTALLED_APPS = [
       'django.contrib.admin',
@@ -80,41 +80,41 @@
 **Descrição**: Integrar TailwindCSS ao projeto Django
 
 **Subtarefas**:
-- [ ] 0.5.1: Instalar django-tailwind: adicionar `django-tailwind==3.8.0` ao requirements.txt
-- [ ] 0.5.2: Instalar dependência: `pip install django-tailwind`
-- [ ] 0.5.3: Adicionar 'tailwind' ao INSTALLED_APPS
-- [ ] 0.5.4: Executar: `python manage.py tailwind init`
-- [ ] 0.5.5: Adicionar app theme gerado ao INSTALLED_APPS
-- [ ] 0.5.6: Configurar TAILWIND_APP_NAME no settings.py
-- [ ] 0.5.7: Instalar dependências do Tailwind: `python manage.py tailwind install`
-- [ ] 0.5.8: Configurar NPM_BIN_PATH no settings.py se necessário
+- [X] 0.5.1: Instalar django-tailwind: adicionar `django-tailwind==3.8.0` ao requirements.txt
+- [X] 0.5.2: Instalar dependência: `pip install django-tailwind`
+- [X] 0.5.3: Adicionar 'tailwind' ao INSTALLED_APPS
+- [X] 0.5.4: Executar: `python manage.py tailwind init`
+- [X] 0.5.5: Adicionar app theme gerado ao INSTALLED_APPS
+- [X] 0.5.6: Configurar TAILWIND_APP_NAME no settings.py
+- [X] 0.5.7: Instalar dependências do Tailwind: `python manage.py tailwind install`
+- [X] 0.5.8: Configurar NPM_BIN_PATH no settings.py se necessário
 
 #### Tarefa 0.6: Estrutura de Templates e Static
 **Descrição**: Criar estrutura de diretórios para templates e arquivos estáticos
 
 **Subtarefas**:
-- [ ] 0.6.1: Criar diretório `templates` na raiz do projeto
-- [ ] 0.6.2: Criar diretório `static` na raiz do projeto
-- [ ] 0.6.3: Configurar TEMPLATES no settings.py para incluir diretório templates:
+- [X] 0.6.1: Criar diretório `templates` na raiz do projeto
+- [X] 0.6.2: Criar diretório `static` na raiz do projeto
+- [X] 0.6.3: Configurar TEMPLATES no settings.py para incluir diretório templates:
   ```python
   'DIRS': [BASE_DIR / 'templates'],
   ```
-- [ ] 0.6.4: Configurar STATIC_URL e STATICFILES_DIRS no settings.py:
+- [X] 0.6.4: Configurar STATIC_URL e STATICFILES_DIRS no settings.py:
   ```python
   STATIC_URL = '/static/'
   STATICFILES_DIRS = [BASE_DIR / 'static']
   ```
-- [ ] 0.6.5: Criar subdiretórios em templates: `templates/base/`, `templates/auth/`, etc.
+- [X] 0.6.5: Criar subdiretórios em templates: `templates/base/`, `templates/auth/`, etc.
 
 #### Tarefa 0.7: Configuração Inicial do Git
 **Descrição**: Inicializar repositório Git e fazer commit inicial
 
 **Subtarefas**:
-- [ ] 0.7.1: Inicializar repositório Git: `git init`
-- [ ] 0.7.2: Verificar que .gitignore está configurado corretamente
-- [ ] 0.7.3: Adicionar arquivos: `git add .`
-- [ ] 0.7.4: Fazer commit inicial: `git commit -m "Initial project setup"`
-- [ ] 0.7.5: Criar arquivo README.md com informações básicas do projeto
+- [X] 0.7.1: Inicializar repositório Git: `git init`
+- [X] 0.7.2: Verificar que .gitignore está configurado corretamente
+- [X] 0.7.3: Adicionar arquivos: `git add .`
+- [X] 0.7.4: Fazer commit inicial: `git commit -m "Initial project setup"`
+- [X] 0.7.5: Criar arquivo README.md com informações básicas do projeto
 
 ---
 
