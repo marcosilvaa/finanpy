@@ -37,6 +37,7 @@
 - `Profile` (app `profiles`): perfil complementar vinculado ao usuario, com `full_name`, `phone`, `created_at` e `updated_at`.
 - `Account` (app `accounts`): conta bancaria vinculada ao usuario, com nome, banco, tipo, saldo, status ativo e timestamps.
 - Admin de `Account` configurado para listar, filtrar e buscar contas bancarias.
+- `AccountForm` (app `accounts`) criado para cadastro e edicao de contas, com labels em portugues e classes TailwindCSS nos campos.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
   - `/auth/signup/`: cadastro com email e senha.
