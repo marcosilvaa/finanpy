@@ -34,6 +34,8 @@
 - `AUTH_USER_MODEL = 'users.CustomUser'` configurado em `config/settings.py`.
 - `CustomUser` (app `users`): herda de `AbstractUser`, login via `email` (campo unico), `REQUIRED_FIELDS = []`, campos `created_at` e `updated_at`, `__str__` retorna email.
 - Migracao inicial do app `users` gerada: `users/migrations/0001_initial.py`.
+- `Profile` (app `profiles`): perfil complementar vinculado ao usuario, com `full_name`, `phone`, `created_at` e `updated_at`.
+- `Account` (app `accounts`): conta bancaria vinculada ao usuario, com nome, banco, tipo, saldo, status ativo e timestamps.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
   - `/auth/signup/`: cadastro com email e senha.
@@ -49,7 +51,8 @@
 
 ## Nao implementado ainda
 
-- Models de contas, categorias, perfis, transacoes.
+- Migration do model `Account`.
+- Models de categorias e transacoes.
 - Admin customizado para models de dominio.
 - Views de produto.
 - URLs dos apps de produto (`accounts`, `categories`, `profiles`, `transactions`).
