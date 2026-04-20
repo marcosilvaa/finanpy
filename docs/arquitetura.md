@@ -36,13 +36,13 @@ O `PRD.md` tambem define Django Template Language, TailwindCSS e JavaScript mini
 
 Os apps estao registrados em `INSTALLED_APPS`:
 
-- `accounts`: dominio de contas financeiras. Possui o model `Account`, vinculado ao usuario e com tipo, saldo e status ativo. Tambem possui admin customizado para gerenciamento via Django Admin e `AccountForm` para cadastro e edicao.
+- `accounts`: dominio de contas financeiras. Possui o model `Account`, vinculado ao usuario e com tipo, saldo e status ativo. Tambem possui admin customizado, `AccountForm` para cadastro e edicao, e `AccountListView` para listar contas do usuario autenticado com saldo total.
 - `categories`: dominio de categorias de transacoes.
 - `profiles`: dominio de perfis de usuario. Possui o model `Profile`, vinculado ao usuario.
 - `transactions`: dominio de transacoes financeiras.
 - `users`: dominio de usuarios, cadastro, login e logout.
 
-Os apps `categories` e `transactions` ainda existem como scaffold Django. O app `accounts` possui model de dominio, admin customizado e form; ainda nao possui views, URLs, templates, migrations ou regras de CRUD implementadas.
+Os apps `categories` e `transactions` ainda existem como scaffold Django. O app `accounts` possui model de dominio, admin customizado, form e view de listagem; ainda nao possui URLs, templates, migrations ou CRUD completo implementado.
 
 ## Banco de dados
 

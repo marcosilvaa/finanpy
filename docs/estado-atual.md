@@ -38,6 +38,7 @@
 - `Account` (app `accounts`): conta bancaria vinculada ao usuario, com nome, banco, tipo, saldo, status ativo e timestamps.
 - Admin de `Account` configurado para listar, filtrar e buscar contas bancarias.
 - `AccountForm` (app `accounts`) criado para cadastro e edicao de contas, com labels em portugues e classes TailwindCSS nos campos.
+- `AccountListView` (app `accounts`) criada para listar contas do usuario autenticado, ordenadas por nome, com saldo total consolidado no contexto.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
   - `/auth/signup/`: cadastro com email e senha.
@@ -50,21 +51,22 @@
   - `templates/auth/signup.html`
   - `templates/auth/login.html`
 - Testes de autenticacao e home em `users/tests.py`.
+- Testes da listagem de contas em `accounts/tests.py`, cobrindo isolamento por usuario, ordenacao por nome e saldo total.
 
 ## Nao implementado ainda
 
 - Migration do model `Account`.
 - Models de categorias e transacoes.
 - Admin customizado para categorias e transacoes.
-- Views de produto.
 - URLs dos apps de produto (`accounts`, `categories`, `profiles`, `transactions`).
+- Demais views de produto.
 - Dashboard.
 - CRUD de contas.
 - CRUD de categorias.
 - CRUD de transacoes.
 - Filtros de transacoes.
 - Calculo de saldos.
-- Testes de regra de negocio.
+- Testes de regras financeiras alem da listagem de contas.
 
 ## Como ler o `PRD.md`
 
