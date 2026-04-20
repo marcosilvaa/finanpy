@@ -139,217 +139,217 @@
 **Descrição**: Configurar Django Admin para gerenciar usuários customizados
 
 **Subtarefas**:
-- [ ] 1.2.1: Abrir arquivo `users/admin.py`
-- [ ] 1.2.2: Importar UserAdmin do Django
-- [ ] 1.2.3: Importar CustomUser model
-- [ ] 1.2.4: Criar classe CustomUserAdmin herdando de UserAdmin
-- [ ] 1.2.5: Configurar list_display com email, is_staff, is_active, date_joined
-- [ ] 1.2.6: Configurar ordering = ['email']
-- [ ] 1.2.7: Registrar CustomUser com CustomUserAdmin
-- [ ] Tarefa 1.2 concluída
+- [X] 1.2.1: Abrir arquivo `users/admin.py`
+- [X] 1.2.2: Importar UserAdmin do Django
+- [X] 1.2.3: Importar CustomUser model
+- [X] 1.2.4: Criar classe CustomUserAdmin herdando de UserAdmin
+- [X] 1.2.5: Configurar list_display com email, is_staff, is_active, date_joined
+- [X] 1.2.6: Configurar ordering = ['email']
+- [X] 1.2.7: Registrar CustomUser com CustomUserAdmin
+- [X] Tarefa 1.2 concluída
 
 #### Tarefa 1.3: Model de Profile
 **Descrição**: Criar model de perfil de usuário com informações adicionais
 
 **Subtarefas**:
-- [ ] 1.3.1: Abrir arquivo `profiles/models.py`
-- [ ] 1.3.2: Importar models e User (get_user_model)
-- [ ] 1.3.3: Criar classe Profile com campo OneToOneField para User
-- [ ] 1.3.4: Adicionar campo full_name (CharField, max_length=200, blank=True)
-- [ ] 1.3.5: Adicionar campo phone (CharField, max_length=20, blank=True)
-- [ ] 1.3.6: Adicionar campos created_at e updated_at
-- [ ] 1.3.7: Adicionar método __str__ retornando full_name ou email do usuário
-- [ ] 1.3.8: Adicionar Meta com verbose_name e verbose_name_plural
-- [ ] Tarefa 1.3 concluída
+- [X] 1.3.1: Abrir arquivo `profiles/models.py`
+- [X] 1.3.2: Importar models e User (get_user_model)
+- [X] 1.3.3: Criar classe Profile com campo OneToOneField para User
+- [X] 1.3.4: Adicionar campo full_name (CharField, max_length=200, blank=True)
+- [X] 1.3.5: Adicionar campo phone (CharField, max_length=20, blank=True)
+- [X] 1.3.6: Adicionar campos created_at e updated_at
+- [X] 1.3.7: Adicionar método __str__ retornando full_name ou email do usuário
+- [X] 1.3.8: Adicionar Meta com verbose_name e verbose_name_plural
+- [X] Tarefa 1.3 concluída
 
 #### Tarefa 1.4: Signal para Criação Automática de Profile
 **Descrição**: Implementar signal para criar perfil automaticamente ao criar usuário
 
 **Subtarefas**:
-- [ ] 1.4.1: Criar arquivo `profiles/signals.py`
-- [ ] 1.4.2: Importar post_save signal e receiver decorator
-- [ ] 1.4.3: Importar User model (get_user_model)
-- [ ] 1.4.4: Importar Profile model
-- [ ] 1.4.5: Criar função create_profile com decorator @receiver(post_save, sender=User)
-- [ ] 1.4.6: Verificar if created e criar Profile.objects.create(user=instance)
-- [ ] 1.4.7: Abrir arquivo `profiles/apps.py`
-- [ ] 1.4.8: Override método ready() para importar signals
-- [ ] 1.4.9: Adicionar import de signals no método ready
-- [ ] Tarefa 1.4 concluída
+- [X] 1.4.1: Criar arquivo `profiles/signals.py`
+- [X] 1.4.2: Importar post_save signal e receiver decorator
+- [X] 1.4.3: Importar User model (get_user_model)
+- [X] 1.4.4: Importar Profile model
+- [X] 1.4.5: Criar função create_profile com decorator @receiver(post_save, sender=User)
+- [X] 1.4.6: Verificar if created e criar Profile.objects.create(user=instance)
+- [X] 1.4.7: Abrir arquivo `profiles/apps.py`
+- [X] 1.4.8: Override método ready() para importar signals
+- [X] 1.4.9: Adicionar import de signals no método ready
+- [X] Tarefa 1.4 concluída
 
 #### Tarefa 1.5: Configuração do Admin para Profile
 **Descrição**: Configurar Django Admin para gerenciar perfis
 
 **Subtarefas**:
-- [ ] 1.5.1: Abrir arquivo `profiles/admin.py`
-- [ ] 1.5.2: Importar admin e Profile model
-- [ ] 1.5.3: Criar classe ProfileAdmin
-- [ ] 1.5.4: Configurar list_display com user email, full_name, phone
-- [ ] 1.5.5: Configurar search_fields com user email e full_name
-- [ ] 1.5.6: Registrar Profile com ProfileAdmin
-- [ ] Tarefa 1.5 concluída
+- [X] 1.5.1: Abrir arquivo `profiles/admin.py`
+- [X] 1.5.2: Importar admin e Profile model
+- [X] 1.5.3: Criar classe ProfileAdmin
+- [X] 1.5.4: Configurar list_display com user email, full_name, phone
+- [X] 1.5.5: Configurar search_fields com user email e full_name
+- [X] 1.5.6: Registrar Profile com ProfileAdmin
+- [X] Tarefa 1.5 concluída
 
 #### Tarefa 1.6: Migrations Iniciais
 **Descrição**: Criar e aplicar migrations para users e profiles
 
 **Subtarefas**:
-- [ ] 1.6.1: Executar: `python manage.py makemigrations users`
-- [ ] 1.6.2: Verificar arquivo de migration gerado
-- [ ] 1.6.3: Executar: `python manage.py makemigrations profiles`
-- [ ] 1.6.4: Verificar arquivo de migration gerado
-- [ ] 1.6.5: Executar: `python manage.py migrate`
-- [ ] 1.6.6: Verificar que tabelas foram criadas no db.sqlite3
-- [ ] Tarefa 1.6 concluída
+- [X] 1.6.1: Executar: `python manage.py makemigrations users`
+- [X] 1.6.2: Verificar arquivo de migration gerado
+- [X] 1.6.3: Executar: `python manage.py makemigrations profiles`
+- [X] 1.6.4: Verificar arquivo de migration gerado
+- [X] 1.6.5: Executar: `python manage.py migrate`
+- [X] 1.6.6: Verificar que tabelas foram criadas no db.sqlite3
+- [X] Tarefa 1.6 concluída
 
 #### Tarefa 1.7: Template Base
 **Descrição**: Criar template base com estrutura HTML e TailwindCSS
 
 **Subtarefas**:
-- [ ] 1.7.1: Criar arquivo `templates/base.html`
-- [ ] 1.7.2: Adicionar DOCTYPE e estrutura HTML5 básica
-- [ ] 1.7.3: Adicionar tag {% load static %} e {% load tailwind_tags %}
-- [ ] 1.7.4: Adicionar {% tailwind_css %} no head
-- [ ] 1.7.5: Configurar meta tags (charset, viewport)
-- [ ] 1.7.6: Adicionar link para Google Fonts (Inter)
-- [ ] 1.7.7: Adicionar classe bg-bg-primary ao body
-- [ ] 1.7.8: Criar bloco {% block title %}
-- [ ] 1.7.9: Criar bloco {% block content %}
-- [ ] 1.7.10: Adicionar estrutura de mensagens do Django com estilização
-- [ ] Tarefa 1.7 concluída
+- [X] 1.7.1: Criar arquivo `templates/base.html`
+- [X] 1.7.2: Adicionar DOCTYPE e estrutura HTML5 básica
+- [X] 1.7.3: Adicionar tag {% load static %} e {% load tailwind_tags %}
+- [X] 1.7.4: Adicionar {% tailwind_css %} no head
+- [X] 1.7.5: Configurar meta tags (charset, viewport)
+- [X] 1.7.6: Adicionar link para Google Fonts (Inter)
+- [X] 1.7.7: Adicionar classe bg-bg-primary ao body
+- [X] 1.7.8: Criar bloco {% block title %}
+- [X] 1.7.9: Criar bloco {% block content %}
+- [X] 1.7.10: Adicionar estrutura de mensagens do Django com estilização
+- [X] Tarefa 1.7 concluída
 
 #### Tarefa 1.8: View de Registro (Signup)
 **Descrição**: Criar view para cadastro de novos usuários
 
 **Subtarefas**:
-- [ ] 1.8.1: Criar arquivo `users/forms.py`
-- [ ] 1.8.2: Importar UserCreationForm e forms do Django
-- [ ] 1.8.3: Importar get_user_model
-- [ ] 1.8.4: Criar classe SignupForm herdando de UserCreationForm
-- [ ] 1.8.5: Adicionar campo email ao Meta.fields
-- [ ] 1.8.6: Configurar widgets com classes TailwindCSS
-- [ ] 1.8.7: Adicionar validação customizada para email único
-- [ ] 1.8.8: Abrir arquivo `users/views.py`
-- [ ] 1.8.9: Criar SignupView como CreateView
-- [ ] 1.8.10: Configurar form_class = SignupForm
-- [ ] 1.8.11: Configurar template_name = 'auth/signup.html'
-- [ ] 1.8.12: Configurar success_url para dashboard
-- [ ] 1.8.13: Override form_valid para fazer login automático após cadastro
-- [ ] Tarefa 1.8 concluída
+- [X] 1.8.1: Criar arquivo `users/forms.py`
+- [X] 1.8.2: Importar UserCreationForm e forms do Django
+- [X] 1.8.3: Importar get_user_model
+- [X] 1.8.4: Criar classe SignupForm herdando de UserCreationForm
+- [X] 1.8.5: Adicionar campo email ao Meta.fields
+- [X] 1.8.6: Configurar widgets com classes TailwindCSS
+- [X] 1.8.7: Adicionar validação customizada para email único
+- [X] 1.8.8: Abrir arquivo `users/views.py`
+- [X] 1.8.9: Criar SignupView como CreateView
+- [X] 1.8.10: Configurar form_class = SignupForm
+- [X] 1.8.11: Configurar template_name = 'auth/signup.html'
+- [X] 1.8.12: Configurar success_url para dashboard
+- [X] 1.8.13: Override form_valid para fazer login automático após cadastro
+- [X] Tarefa 1.8 concluída
 
 #### Tarefa 1.9: Template de Registro
 **Descrição**: Criar template HTML para página de cadastro
 
 **Subtarefas**:
-- [ ] 1.9.1: Criar arquivo `templates/auth/signup.html`
-- [ ] 1.9.2: Extender base.html
-- [ ] 1.9.3: Adicionar título da página no block title
-- [ ] 1.9.4: Criar container centralizado com max-width
-- [ ] 1.9.5: Adicionar logo/nome Finanpy com gradiente
-- [ ] 1.9.6: Criar card com bg-bg-secondary e border
-- [ ] 1.9.7: Adicionar título "Criar Conta"
-- [ ] 1.9.8: Criar formulário com method POST e csrf_token
-- [ ] 1.9.9: Renderizar campos do form com classes TailwindCSS
-- [ ] 1.9.10: Adicionar botão de submit estilizado
-- [ ] 1.9.11: Adicionar link para página de login
-- [ ] 1.9.12: Adicionar tratamento de erros do formulário
-- [ ] Tarefa 1.9 concluída
+- [X] 1.9.1: Criar arquivo `templates/auth/signup.html`
+- [X] 1.9.2: Extender base.html
+- [X] 1.9.3: Adicionar título da página no block title
+- [X] 1.9.4: Criar container centralizado com max-width
+- [X] 1.9.5: Adicionar logo/nome Finanpy com gradiente
+- [X] 1.9.6: Criar card com bg-bg-secondary e border
+- [X] 1.9.7: Adicionar título "Criar Conta"
+- [X] 1.9.8: Criar formulário com method POST e csrf_token
+- [X] 1.9.9: Renderizar campos do form com classes TailwindCSS
+- [X] 1.9.10: Adicionar botão de submit estilizado
+- [X] 1.9.11: Adicionar link para página de login
+- [X] 1.9.12: Adicionar tratamento de erros do formulário
+- [X] Tarefa 1.9 concluída
 
 #### Tarefa 1.10: View de Login
 **Descrição**: Criar view para autenticação de usuários
 
 **Subtarefas**:
-- [ ] 1.10.1: No arquivo `users/forms.py`, criar LoginForm
-- [ ] 1.10.2: Adicionar campo email (EmailField)
-- [ ] 1.10.3: Adicionar campo password (CharField com widget PasswordInput)
-- [ ] 1.10.4: Aplicar classes TailwindCSS aos widgets
-- [ ] 1.10.5: No arquivo `users/views.py`, criar LoginView como FormView
-- [ ] 1.10.6: Configurar form_class = LoginForm
-- [ ] 1.10.7: Configurar template_name = 'auth/login.html'
-- [ ] 1.10.8: Configurar success_url para dashboard
-- [ ] 1.10.9: Implementar método form_valid com authenticate e login
-- [ ] 1.10.10: Adicionar tratamento de credenciais inválidas
-- [ ] 1.10.11: Adicionar mensagem de erro para login inválido
-- [ ] Tarefa 1.10 concluída
+- [X] 1.10.1: No arquivo `users/forms.py`, criar LoginForm
+- [X] 1.10.2: Adicionar campo email (EmailField)
+- [X] 1.10.3: Adicionar campo password (CharField com widget PasswordInput)
+- [X] 1.10.4: Aplicar classes TailwindCSS aos widgets
+- [X] 1.10.5: No arquivo `users/views.py`, criar LoginView como FormView
+- [X] 1.10.6: Configurar form_class = LoginForm
+- [X] 1.10.7: Configurar template_name = 'auth/login.html'
+- [X] 1.10.8: Configurar success_url para dashboard
+- [X] 1.10.9: Implementar método form_valid com authenticate e login
+- [X] 1.10.10: Adicionar tratamento de credenciais inválidas
+- [X] 1.10.11: Adicionar mensagem de erro para login inválido
+- [X] Tarefa 1.10 concluída
 
 #### Tarefa 1.11: Template de Login
 **Descrição**: Criar template HTML para página de login
 
 **Subtarefas**:
-- [ ] 1.11.1: Criar arquivo `templates/auth/login.html`
-- [ ] 1.11.2: Extender base.html
-- [ ] 1.11.3: Adicionar título da página
-- [ ] 1.11.4: Criar container centralizado
-- [ ] 1.11.5: Adicionar logo/nome Finanpy com gradiente
-- [ ] 1.11.6: Criar card de login estilizado
-- [ ] 1.11.7: Adicionar título "Entrar"
-- [ ] 1.11.8: Criar formulário de login
-- [ ] 1.11.9: Renderizar campos com estilização
-- [ ] 1.11.10: Adicionar botão de submit
-- [ ] 1.11.11: Adicionar link para página de cadastro
-- [ ] 1.11.12: Adicionar exibição de mensagens de erro
-- [ ] Tarefa 1.11 concluída
+- [X] 1.11.1: Criar arquivo `templates/auth/login.html`
+- [X] 1.11.2: Extender base.html
+- [X] 1.11.3: Adicionar título da página
+- [X] 1.11.4: Criar container centralizado
+- [X] 1.11.5: Adicionar logo/nome Finanpy com gradiente
+- [X] 1.11.6: Criar card de login estilizado
+- [X] 1.11.7: Adicionar título "Entrar"
+- [X] 1.11.8: Criar formulário de login
+- [X] 1.11.9: Renderizar campos com estilização
+- [X] 1.11.10: Adicionar botão de submit
+- [X] 1.11.11: Adicionar link para página de cadastro
+- [X] 1.11.12: Adicionar exibição de mensagens de erro
+- [X] Tarefa 1.11 concluída
 
 #### Tarefa 1.12: View de Logout
 **Descrição**: Criar view para logout de usuários
 
 **Subtarefas**:
-- [ ] 1.12.1: No arquivo `users/views.py`, importar LogoutView do Django
-- [ ] 1.12.2: Criar LogoutView personalizada se necessário
-- [ ] 1.12.3: Configurar LOGOUT_REDIRECT_URL = '/' no settings.py
-- [ ] 1.12.4: Adicionar mensagem de sucesso ao fazer logout
-- [ ] Tarefa 1.12 concluída
+- [X] 1.12.1: No arquivo `users/views.py`, importar LogoutView do Django
+- [X] 1.12.2: Criar LogoutView personalizada se necessário
+- [X] 1.12.3: Configurar LOGOUT_REDIRECT_URL = '/' no settings.py
+- [X] 1.12.4: Adicionar mensagem de sucesso ao fazer logout
+- [X] Tarefa 1.12 concluída
 
 #### Tarefa 1.13: URLs de Autenticação
 **Descrição**: Configurar URLs para views de autenticação
 
 **Subtarefas**:
-- [ ] 1.13.1: Criar arquivo `users/urls.py`
-- [ ] 1.13.2: Importar path do Django
-- [ ] 1.13.3: Importar views de users
-- [ ] 1.13.4: Criar urlpatterns list
-- [ ] 1.13.5: Adicionar path para signup: path('signup/', SignupView.as_view(), name='signup')
-- [ ] 1.13.6: Adicionar path para login: path('login/', LoginView.as_view(), name='login')
-- [ ] 1.13.7: Adicionar path para logout: path('logout/', LogoutView.as_view(), name='logout')
-- [ ] 1.13.8: Abrir arquivo `core/urls.py`
-- [ ] 1.13.9: Adicionar include de users.urls: path('auth/', include('users.urls'))
-- [ ] Tarefa 1.13 concluída
+- [X] 1.13.1: Criar arquivo `users/urls.py`
+- [X] 1.13.2: Importar path do Django
+- [X] 1.13.3: Importar views de users
+- [X] 1.13.4: Criar urlpatterns list
+- [X] 1.13.5: Adicionar path para signup: path('signup/', SignupView.as_view(), name='signup')
+- [X] 1.13.6: Adicionar path para login: path('login/', LoginView.as_view(), name='login')
+- [X] 1.13.7: Adicionar path para logout: path('logout/', LogoutView.as_view(), name='logout')
+- [X] 1.13.8: Abrir arquivo `core/urls.py`
+- [X] 1.13.9: Adicionar include de users.urls: path('auth/', include('users.urls'))
+- [X] Tarefa 1.13 concluída
 
 #### Tarefa 1.14: Página Inicial Pública
 **Descrição**: Criar página inicial para usuários não autenticados
 
 **Subtarefas**:
-- [ ] 1.14.1: Criar arquivo `users/views.py` adicionar HomeView
-- [ ] 1.14.2: Criar TemplateView para home
-- [ ] 1.14.3: Configurar template_name = 'home.html'
-- [ ] 1.14.4: Override método get para redirecionar usuários autenticados
-- [ ] 1.14.5: Criar arquivo `templates/home.html`
-- [ ] 1.14.6: Extender base.html
-- [ ] 1.14.7: Criar seção hero com gradiente
-- [ ] 1.14.8: Adicionar logo e nome Finanpy
-- [ ] 1.14.9: Adicionar tagline/descrição do produto
-- [ ] 1.14.10: Adicionar botões de Cadastrar e Entrar estilizados
-- [ ] 1.14.11: Criar seção de features/funcionalidades
-- [ ] 1.14.12: Listar principais funcionalidades com ícones
-- [ ] 1.14.13: Adicionar URL no urls.py: path('', HomeView.as_view(), name='home')
-- [ ] Tarefa 1.14 concluída
+- [X] 1.14.1: Criar arquivo `users/views.py` adicionar HomeView
+- [X] 1.14.2: Criar TemplateView para home
+- [X] 1.14.3: Configurar template_name = 'home.html'
+- [X] 1.14.4: Override método get para redirecionar usuários autenticados
+- [X] 1.14.5: Criar arquivo `templates/home.html`
+- [X] 1.14.6: Extender base.html
+- [X] 1.14.7: Criar seção hero com gradiente
+- [X] 1.14.8: Adicionar logo e nome Finanpy
+- [X] 1.14.9: Adicionar tagline/descrição do produto
+- [X] 1.14.10: Adicionar botões de Cadastrar e Entrar estilizados
+- [X] 1.14.11: Criar seção de features/funcionalidades
+- [X] 1.14.12: Listar principais funcionalidades com ícones
+- [X] 1.14.13: Adicionar URL no urls.py: path('', HomeView.as_view(), name='home')
+- [X] Tarefa 1.14 concluída
 
 #### Tarefa 1.15: Testes Manuais de Autenticação
 **Descrição**: Testar fluxo completo de autenticação
 
 **Subtarefas**:
-- [ ] 1.15.1: Iniciar servidor de desenvolvimento
-- [ ] 1.15.2: Acessar página inicial e verificar layout
-- [ ] 1.15.3: Clicar em "Cadastrar" e verificar redirecionamento
-- [ ] 1.15.4: Testar cadastro com email inválido
-- [ ] 1.15.5: Testar cadastro com senha fraca
-- [ ] 1.15.6: Cadastrar usuário válido
-- [ ] 1.15.7: Verificar redirecionamento após cadastro
-- [ ] 1.15.8: Fazer logout
-- [ ] 1.15.9: Tentar login com credenciais inválidas
-- [ ] 1.15.10: Fazer login com credenciais válidas
-- [ ] 1.15.11: Verificar que usuário autenticado é redirecionado da home
-- [ ] 1.15.12: Verificar criação automática do perfil no admin
-- [ ] Tarefa 1.15 concluída
+- [X] 1.15.1: Iniciar servidor de desenvolvimento
+- [X] 1.15.2: Acessar página inicial e verificar layout
+- [X] 1.15.3: Clicar em "Cadastrar" e verificar redirecionamento
+- [X] 1.15.4: Testar cadastro com email inválido
+- [X] 1.15.5: Testar cadastro com senha fraca
+- [X] 1.15.6: Cadastrar usuário válido
+- [X] 1.15.7: Verificar redirecionamento após cadastro
+- [X] 1.15.8: Fazer logout
+- [X] 1.15.9: Tentar login com credenciais inválidas
+- [X] 1.15.10: Fazer login com credenciais válidas
+- [X] 1.15.11: Verificar que usuário autenticado é redirecionado da home
+- [X] 1.15.12: Verificar criação automática do perfil no admin
+- [X] Tarefa 1.15 concluída
 
 ---
 

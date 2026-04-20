@@ -1,0 +1,53 @@
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Finanpy{% endblock %}</title>
+    {% tailwind_css %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-bg-primary text-text-primary font-['Inter'] min-h-screen">
+
+    {% if user.is_authenticated %}
+        {% include 'includes/navbar.html' %}
+    {% endif %}
+
+    <main>
+        {% if messages %}
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="flex items-start justify-between gap-4 bg-success/10 border border-success/30 text-success rounded-lg px-4 py-3 mb-3">
+                            <p class="text-sm font-medium">{{ message }}</p>
+                            <button type="button" class="shrink-0 text-success/70 hover:text-success transition-colors leading-none text-lg font-bold" onclick="this.parentElement.remove()" aria-label="Fechar">&times;</button>
+                        </div>
+                    {% elif message.tags == 'error' %}
+                        <div class="flex items-start justify-between gap-4 bg-danger/10 border border-danger/30 text-danger rounded-lg px-4 py-3 mb-3">
+                            <p class="text-sm font-medium">{{ message }}</p>
+                            <button type="button" class="shrink-0 text-danger/70 hover:text-danger transition-colors leading-none text-lg font-bold" onclick="this.parentElement.remove()" aria-label="Fechar">&times;</button>
+                        </div>
+                    {% elif message.tags == 'warning' %}
+                        <div class="flex items-start justify-between gap-4 bg-warning/10 border border-warning/30 text-warning rounded-lg px-4 py-3 mb-3">
+                            <p class="text-sm font-medium">{{ message }}</p>
+                            <button type="button" class="shrink-0 text-warning/70 hover:text-warning transition-colors leading-none text-lg font-bold" onclick="this.parentElement.remove()" aria-label="Fechar">&times;</button>
+                        </div>
+                    {% else %}
+                        <div class="flex items-start justify-between gap-4 bg-accent-primary/10 border border-accent-primary/30 text-accent-secondary rounded-lg px-4 py-3 mb-3">
+                            <p class="text-sm font-medium">{{ message }}</p>
+                            <button type="button" class="shrink-0 text-accent-secondary/70 hover:text-accent-secondary transition-colors leading-none text-lg font-bold" onclick="this.parentElement.remove()" aria-label="Fechar">&times;</button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

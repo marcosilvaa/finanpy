@@ -133,3 +133,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = '/opt/homebrew/bin/npm'
+
+# Auth redirects
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'  # temporary, will be updated to /dashboard/ in Sprint 5

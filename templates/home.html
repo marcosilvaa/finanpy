@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Finanpy — Controle Financeiro{% endblock %}
+
+{% block content %}
+
+{# Hero section #}
+<section class="bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary min-h-screen flex items-center justify-center px-4">
+    <div class="flex flex-col items-center text-center">
+
+        {# Logo / name #}
+        <h1 class="text-5xl font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent leading-tight">
+            Finanpy
+        </h1>
+
+        {# Tagline #}
+        <p class="text-text-secondary text-xl mt-4">
+            Controle suas finanças com inteligência
+        </p>
+
+        {# Description #}
+        <p class="text-text-secondary text-base mt-2 max-w-lg text-center">
+            Acompanhe receitas, despesas e investimentos em um único lugar.
+        </p>
+
+        {# CTA buttons #}
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+            <a href="{% url 'users:signup' %}"
+               class="bg-accent-primary hover:bg-accent-secondary text-white px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-primary">
+                Criar Conta
+            </a>
+            <a href="{% url 'users:login' %}"
+               class="border border-border-default text-text-primary hover:bg-bg-secondary px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-border-default focus:ring-offset-2 focus:ring-offset-bg-primary">
+                Entrar
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{# Features section #}
+<section class="py-20 bg-bg-secondary">
+    <div class="max-w-5xl mx-auto px-6">
+
+        <h2 class="text-center text-text-primary text-3xl font-bold mb-12">
+            Funcionalidades
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {# Feature 1: Contas #}
+            <article class="bg-bg-card rounded-xl p-6 border border-border-default">
+                <div class="text-4xl mb-4" aria-hidden="true">💰</div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Contas</h3>
+                <p class="text-text-secondary text-sm">
+                    Gerencie suas contas bancárias e carteiras
+                </p>
+            </article>
+
+            {# Feature 2: Categorias #}
+            <article class="bg-bg-card rounded-xl p-6 border border-border-default">
+                <div class="text-4xl mb-4" aria-hidden="true">📊</div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Categorias</h3>
+                <p class="text-text-secondary text-sm">
+                    Organize receitas e despesas por categoria
+                </p>
+            </article>
+
+            {# Feature 3: Dashboard #}
+            <article class="bg-bg-card rounded-xl p-6 border border-border-default">
+                <div class="text-4xl mb-4" aria-hidden="true">📈</div>
+                <h3 class="text-text-primary font-semibold text-lg mb-2">Dashboard</h3>
+                <p class="text-text-secondary text-sm">
+                    Visualize seu saldo e histórico financeiro
+                </p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

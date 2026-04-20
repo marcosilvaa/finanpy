@@ -1,0 +1,9 @@
+<nav class="bg-bg-secondary border-b border-border-default">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+        <a href="{% url 'home' %}" class="text-accent-primary font-bold text-lg">Finanpy</a>
+        <form method="post" action="{% url 'users:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="text-text-secondary hover:text-text-primary text-sm transition-colors">Sair</button>
+        </form>
+    </div>
+</nav>
