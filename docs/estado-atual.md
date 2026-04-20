@@ -36,6 +36,7 @@
 - Migracao inicial do app `users` gerada: `users/migrations/0001_initial.py`.
 - `Profile` (app `profiles`): perfil complementar vinculado ao usuario, com `full_name`, `phone`, `created_at` e `updated_at`.
 - `Account` (app `accounts`): conta bancaria vinculada ao usuario, com nome, banco, tipo, saldo, status ativo e timestamps.
+- Admin de `Account` configurado para listar, filtrar e buscar contas bancarias.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
   - `/auth/signup/`: cadastro com email e senha.
@@ -53,7 +54,7 @@
 
 - Migration do model `Account`.
 - Models de categorias e transacoes.
-- Admin customizado para models de dominio.
+- Admin customizado para categorias e transacoes.
 - Views de produto.
 - URLs dos apps de produto (`accounts`, `categories`, `profiles`, `transactions`).
 - Dashboard.
