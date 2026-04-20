@@ -39,6 +39,7 @@
 - Admin de `Account` configurado para listar, filtrar e buscar contas bancarias.
 - `AccountForm` (app `accounts`) criado para cadastro e edicao de contas, com labels em portugues e classes TailwindCSS nos campos.
 - `AccountListView` (app `accounts`) criada para listar contas do usuario autenticado, ordenadas por nome, com saldo total consolidado no contexto.
+- Template `templates/accounts/account_list.html` criado para exibir contas do usuario, saldo total consolidado, estado vazio e botoes de acao ainda desabilitados enquanto as URLs de CRUD nao existem.
 - Pagina inicial publica em `/`.
 - Rotas de autenticacao no app `users`:
   - `/auth/signup/`: cadastro com email e senha.
@@ -50,6 +51,7 @@
   - `templates/includes/navbar.html`
   - `templates/auth/signup.html`
   - `templates/auth/login.html`
+  - `templates/accounts/account_list.html`
 - Testes de autenticacao e home em `users/tests.py`.
 - Testes da listagem de contas em `accounts/tests.py`, cobrindo isolamento por usuario, ordenacao por nome e saldo total.
 
@@ -60,6 +62,7 @@
 - Admin customizado para categorias e transacoes.
 - URLs dos apps de produto (`accounts`, `categories`, `profiles`, `transactions`).
 - Demais views de produto.
+- Templates de criacao, edicao e exclusao de contas.
 - Dashboard.
 - CRUD de contas.
 - CRUD de categorias.

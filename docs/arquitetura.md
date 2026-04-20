@@ -36,13 +36,13 @@ O `PRD.md` tambem define Django Template Language, TailwindCSS e JavaScript mini
 
 Os apps estao registrados em `INSTALLED_APPS`:
 
-- `accounts`: dominio de contas financeiras. Possui o model `Account`, vinculado ao usuario e com tipo, saldo e status ativo. Tambem possui admin customizado, `AccountForm` para cadastro e edicao, e `AccountListView` para listar contas do usuario autenticado com saldo total.
+- `accounts`: dominio de contas financeiras. Possui o model `Account`, vinculado ao usuario e com tipo, saldo e status ativo. Tambem possui admin customizado, `AccountForm` para cadastro e edicao, `AccountListView` para listar contas do usuario autenticado com saldo total, e template de listagem de contas.
 - `categories`: dominio de categorias de transacoes.
 - `profiles`: dominio de perfis de usuario. Possui o model `Profile`, vinculado ao usuario.
 - `transactions`: dominio de transacoes financeiras.
 - `users`: dominio de usuarios, cadastro, login e logout.
 
-Os apps `categories` e `transactions` ainda existem como scaffold Django. O app `accounts` possui model de dominio, admin customizado, form e view de listagem; ainda nao possui URLs, templates, migrations ou CRUD completo implementado.
+Os apps `categories` e `transactions` ainda existem como scaffold Django. O app `accounts` possui model de dominio, admin customizado, form, view de listagem e template de listagem; ainda nao possui URLs, migrations ou CRUD completo implementado.
 
 ## Banco de dados
 
@@ -70,5 +70,6 @@ Templates existentes:
 - `templates/includes/navbar.html`
 - `templates/auth/signup.html`
 - `templates/auth/login.html`
+- `templates/accounts/account_list.html`
 
 `STATIC_URL = '/static/'` esta configurado. O CSS compilado pelo Tailwind fica em `theme/static/css/dist/styles.css`.
