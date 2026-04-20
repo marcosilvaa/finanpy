@@ -2,9 +2,10 @@
 
 ## Requisitos
 
-- Python `>=3.13`.
+- Python `>=3.13,<4.0.0`.
 - Poetry, conforme `pyproject.toml`.
 - Django `>=6.0.4,<7.0.0`.
+- Node.js / npm disponivel em `/opt/homebrew/bin/npm` (necessario para TailwindCSS).
 
 ## Instalar dependencias
 
@@ -40,6 +41,33 @@ Os arquivos de teste existem nos apps, mas ainda contem apenas o scaffold padrao
 
 O projeto usa SQLite no arquivo `db.sqlite3`, configurado em `config/settings.py`.
 
+## Variaveis de ambiente
+
+O projeto usa `python-decouple` para ler variaveis de um arquivo `.env` na raiz do projeto.
+Crie o arquivo antes de rodar o servidor:
+
+```
+SECRET_KEY=sua-chave-secreta
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
+O arquivo `.env` esta no `.gitignore` e nao deve ser versionado.
+
 ## Ambiente atual
 
-`DEBUG = True` e `ALLOWED_HOSTS = []` indicam configuracao de desenvolvimento. Antes de qualquer uso em producao, essas configuracoes precisam ser revisadas.
+`DEBUG` e `ALLOWED_HOSTS` sao controlados pelo `.env`. O padrao de `DEBUG` sem `.env` e `False`.
+
+## TailwindCSS
+
+Para compilar o CSS em desenvolvimento, rode em um terminal separado:
+
+```bash
+poetry run python manage.py tailwind start
+```
+
+Para compilar uma vez para producao:
+
+```bash
+poetry run python manage.py tailwind build
+```
