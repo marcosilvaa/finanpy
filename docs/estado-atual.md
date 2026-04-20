@@ -31,9 +31,13 @@
   - `NPM_BIN_PATH = '/opt/homebrew/bin/npm'` configurado em `config/settings.py`.
   - Dependencias Node instaladas em `theme/static_src/node_modules/`.
 
+- `AUTH_USER_MODEL = 'users.CustomUser'` configurado em `config/settings.py`.
+- `CustomUser` (app `users`): herda de `AbstractUser`, login via `email` (campo unico), `REQUIRED_FIELDS = []`, campos `created_at` e `updated_at`, `__str__` retorna email.
+- Migracao inicial do app `users` gerada: `users/migrations/0001_initial.py`.
+
 ## Nao implementado ainda
 
-- Models de contas, categorias, perfis, transacoes ou usuarios customizados.
+- Models de contas, categorias, perfis, transacoes.
 - Admin customizado para models de dominio.
 - Views de produto.
 - URLs dos apps.
