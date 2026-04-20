@@ -25,9 +25,13 @@ poetry run python manage.py migrate
 poetry run python manage.py runserver
 ```
 
-A URL configurada no projeto hoje e apenas:
+URLs configuradas no projeto hoje:
 
 - `/admin/`: Django Admin.
+- `/`: pagina inicial publica.
+- `/auth/signup/`: cadastro.
+- `/auth/login/`: login.
+- `/auth/logout/`: logout via POST.
 
 ## Rodar testes
 

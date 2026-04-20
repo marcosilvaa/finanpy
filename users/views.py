@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, TemplateView
 
@@ -54,8 +53,3 @@ class CustomLogoutView(LogoutView):
 
 class HomeView(TemplateView):
     template_name = 'home.html'
-
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('/accounts/')
-        return super().get(request, *args, **kwargs)

@@ -21,6 +21,29 @@ class SignupViewTests(TestCase):
             'password2': 'StrongPass123!',
         })
         self.assertEqual(User.objects.filter(email='new@example.com').count(), 1)
+        self.assertEqual(
+            User.objects.get(email='new@example.com').username,
+            'new@example.com',
+        )
+
+    def test_multiple_signups_use_unique_email_as_username(self):
+        signups = [
+            'first@example.com',
+            'second@example.com',
+        ]
+
+        for email in signups:
+            self.client.post(reverse('users:signup'), {
+                'email': email,
+                'password1': 'StrongPass123!',
+                'password2': 'StrongPass123!',
+            })
+
+        self.assertEqual(User.objects.count(), 2)
+        self.assertQuerySetEqual(
+            User.objects.order_by('email').values_list('username', flat=True),
+            signups,
+        )
 
     def test_signup_logs_in_after_creation(self):
         self.client.post(reverse('users:signup'), {
@@ -118,7 +141,8 @@ class HomeViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
 
-    def test_authenticated_user_redirected_to_accounts(self):
+    def test_authenticated_user_sees_home(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('home'))
-        self.assertRedirects(response, '/accounts/', fetch_redirect_response=False)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home.html')

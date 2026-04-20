@@ -29,7 +29,7 @@ O `PRD.md` tambem define Django Template Language, TailwindCSS e JavaScript mini
 `config/` contem a configuracao principal do Django:
 
 - `settings.py`: apps instalados, middleware, banco SQLite, templates e static files.
-- `urls.py`: rotas globais. Hoje registra apenas `/admin/`.
+- `urls.py`: rotas globais. Registra `/admin/`, inclui `users.urls` em `/auth/` e aponta `/` para a pagina inicial.
 - `asgi.py` e `wsgi.py`: entradas padrao para servidores ASGI/WSGI.
 
 ## Apps existentes
@@ -40,9 +40,9 @@ Os apps estao registrados em `INSTALLED_APPS`:
 - `categories`: dominio de categorias de transacoes.
 - `profiles`: dominio de perfis de usuario.
 - `transactions`: dominio de transacoes financeiras.
-- `users`: dominio de usuarios.
+- `users`: dominio de usuarios, cadastro, login e logout.
 
-Hoje esses apps existem como scaffold Django. Eles ainda nao possuem models, views ou regras de negocio implementadas.
+Os apps `accounts`, `categories`, `profiles` e `transactions` ainda existem como scaffold Django. Eles ainda nao possuem models, views ou regras de negocio implementadas.
 
 ## Banco de dados
 
@@ -61,6 +61,14 @@ O `PRD.md` cita possibilidade futura de migrar para PostgreSQL, mas o projeto at
 
 ## Templates e arquivos estaticos
 
-`APP_DIRS = True` esta habilitado para templates de apps, mas nao ha templates no repositorio.
+`APP_DIRS = True` esta habilitado para templates de apps.
 
-`STATIC_URL = "static/"` esta configurado, mas nao ha diretorio de static files no repositorio.
+Templates existentes:
+
+- `templates/base.html`
+- `templates/home.html`
+- `templates/includes/navbar.html`
+- `templates/auth/signup.html`
+- `templates/auth/login.html`
+
+`STATIC_URL = '/static/'` esta configurado. O CSS compilado pelo Tailwind fica em `theme/static/css/dist/styles.css`.

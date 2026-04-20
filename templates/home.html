@@ -23,17 +23,19 @@
             Acompanhe receitas, despesas e investimentos em um único lugar.
         </p>
 
-        {# CTA buttons #}
-        <div class="mt-8 flex flex-wrap gap-4 justify-center">
-            <a href="{% url 'users:signup' %}"
-               class="bg-accent-primary hover:bg-accent-secondary text-white px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-primary">
-                Criar Conta
-            </a>
-            <a href="{% url 'users:login' %}"
-               class="border border-border-default text-text-primary hover:bg-bg-secondary px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-border-default focus:ring-offset-2 focus:ring-offset-bg-primary">
-                Entrar
-            </a>
-        </div>
+        {% if not user.is_authenticated %}
+            {# CTA buttons #}
+            <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                <a href="{% url 'users:signup' %}"
+                   class="bg-accent-primary hover:bg-accent-secondary text-white px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-primary">
+                    Criar Conta
+                </a>
+                <a href="{% url 'users:login' %}"
+                   class="border border-border-default text-text-primary hover:bg-bg-secondary px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-border-default focus:ring-offset-2 focus:ring-offset-bg-primary">
+                    Entrar
+                </a>
+            </div>
+        {% endif %}
 
     </div>
 </section>

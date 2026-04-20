@@ -25,6 +25,15 @@ class SignupForm(UserCreationForm):
             raise forms.ValidationError('Este e-mail já está cadastrado.')
         return email
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = user.email
+        if commit:
+            user.save()
+            if hasattr(self, 'save_m2m'):
+                self.save_m2m()
+        return user
+
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
